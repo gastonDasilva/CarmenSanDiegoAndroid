@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CarmenSandiego</string>
+    <string name="paisDondeEstoy">nombrePais</string>
+    <string name="villanoAArrestar">nombreVillano</string>
+</resources>

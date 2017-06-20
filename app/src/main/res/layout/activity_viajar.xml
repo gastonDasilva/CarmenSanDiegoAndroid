@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gaston.carmensandiego.ViajarActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estás En"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="20dp"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/carmenSanDiego_paisDondeEstoy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint= "@string/paisDondeEstoy"
+            android:textSize="25dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <View
+            android:id="@+id/firstDivider"
+            android:layout_width="380dp"
+            android:layout_height="4dp"
+            android:background="#000080" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Viajar "
+            android:textSize="25dp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="198dp"
+            android:id="@+id/listView" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="1dp"
+        android:text="Destinos Recorridos "
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+        android:id="@+id/carmenSanDiego_paisesRecorridos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint= "Paises Recorridos"
+        android:padding="10dp"
+        android:textStyle="bold|italic"
+        android:textSize="19dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orden De Arresto contra:"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="10dp"
+            android:textSize="15dp"
+            android:textStyle="bold|italic"/>
+
+        <TextView
+            android:id="@+id/carmenSanDiego_villanoAArrestar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint= "@string/villanoAArrestar"
+            android:padding="10dp"
+            android:textStyle="bold|italic"
+            android:textSize="19dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/carmenSanDiego_ordenDeArresto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="ordenDeArresto"
+            android:padding="10dp"
+            android:text="Orden De Arresto" />
+
+        <Button
+            android:id="@+id/carmenSanDiego_pista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="pista"
+            android:padding="10dp"
+            android:text="Buscar Pistas" />
+    </LinearLayout>
+</LinearLayout>
