@@ -33,6 +33,13 @@ public class Caso implements Serializable {
         this.id = ids;
         this.setearPaisDondeEstoy(); // para arrancar en un pais
     }
+    public void setearReporteCaso(String s){
+        reporteDelCaso = s;
+    }
+
+    public void setearobjetoRobado(String s){
+        objetoRobado = s;
+    }
     public List<Pais> getPlanDeEscape(){
         return planDeEscape;
     }

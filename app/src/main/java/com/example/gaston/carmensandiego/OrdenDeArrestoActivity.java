@@ -7,11 +7,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.gaston.carmensandiego.model.Caso;
+import com.example.gaston.carmensandiego.model.DummyData;
 import com.example.gaston.carmensandiego.model.Villano;
 
 public class OrdenDeArrestoActivity extends AppCompatActivity {
     public  final static String EXTRA_CASO = "com.example.gaston.carmensandiego.CASO";
-    private Caso caso = new Caso();
+    private DummyData dummy = new DummyData();
+    private Caso caso = dummy.getCaso();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,6 @@ public class OrdenDeArrestoActivity extends AppCompatActivity {
 
     public void viajar(View view) {
         Intent intent = new Intent(this, ViajarActivity.class);
-
         intent.putExtra(EXTRA_CASO, caso);
         startActivity(intent);
 
