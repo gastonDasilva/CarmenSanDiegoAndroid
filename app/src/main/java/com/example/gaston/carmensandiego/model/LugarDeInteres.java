@@ -1,10 +1,12 @@
 package com.example.gaston.carmensandiego.model;
 
+import java.io.Serializable;
+
 /**
  * Created by gaston on 18/6/2017.
  */
 
-public abstract class LugarDeInteres {
+public abstract class LugarDeInteres implements Serializable {
     // Solo pueden ser Club,Embajada,Banco y Biblioteca
      private Boolean informante = false  ;//Solo puede haber una persona en el lugar, es decir que solo un booleano puede ser true
     private Boolean ocupante = false;
@@ -108,14 +110,14 @@ public abstract class LugarDeInteres {
         if (vil == null) {
             return "CUIDADO DETECTIVE! el villano esta en la ciudad";
         } else {
-            if (cas.ordenDeArrestoAlVillano == null) {
+            if (cas.getOrdenDeArresto() == null) {
                 return "CUIDADO DETECTIVE!El villano escapo por no tener una orden de arresto";
             } else {
-                result = "Alto!!" + cas.ordenDeArrestoAlVillano.nombre + " Queda Arrestado";
-                if (cas.ordenDeArrestoAlVillano.nombre == cas.responsable.nombre) {
+                result = "Alto!!" + cas.getOrdenDeArresto().getNombre() + " Queda Arrestado";
+                if (cas.getOrdenDeArresto().getNombre() == cas.getResponsable().getNombre()) {
                     result = result + " CONGRATULATIONS WACHIN! Atrapaste al villano, Sos una bestia ";
                 } else {
-                    result = result + "FALLASTE, atrapaste a " + cas.ordenDeArrestoAlVillano.nombre + " Y ese loco no realizo el robo";
+                    result = result + "FALLASTE, atrapaste a " + cas.getOrdenDeArresto().getNombre() + " Y ese loco no realizo el robo";
                 }
             }
         }

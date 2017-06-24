@@ -1,13 +1,14 @@
 package com.example.gaston.carmensandiego.model;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by gaston on 18/6/2017.
  */
 
-public class Embajada extends  LugarDeInteres {
+public class Embajada extends  LugarDeInteres implements Serializable {
 
     Pais paisProximoDestino;
     String primerCaracteristicaDelPaisDestino;

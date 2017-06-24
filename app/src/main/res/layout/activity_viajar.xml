@@ -23,7 +23,7 @@
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/carmenSanDiego_paisDondeEstoy"
+            android:id="@+id/carmenSanDiego_paisDondeEstoy2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint= "@string/paisDondeEstoy"

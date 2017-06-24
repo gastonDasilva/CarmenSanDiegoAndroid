@@ -96,6 +96,10 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="19dp"/>
     <!--  Falta poner el selector de villano -->
+        <Spinner
+            android:id="@+id/villanos_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
         <Button
             android:id="@+id/carmenSanDiego_pedirOrden"
             android:layout_width="384dp"

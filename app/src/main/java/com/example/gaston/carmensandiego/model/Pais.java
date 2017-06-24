@@ -1,5 +1,6 @@
 package com.example.gaston.carmensandiego.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * Created by gaston on 18/6/2017.
  */
 
-public class Pais {
+public class Pais implements Serializable {
 
     int id;
     String nombrePais;

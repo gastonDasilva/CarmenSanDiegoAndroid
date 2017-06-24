@@ -1,10 +1,12 @@
 package com.example.gaston.carmensandiego.model;
 
+import java.io.Serializable;
+
 /**
  * Created by gaston on 18/6/2017.
  */
 
-public class Club extends  LugarDeInteres {
+public class Club extends  LugarDeInteres implements Serializable {
     String primerCaracteristicaDELasSeñasParticulares;
     String segundaCaracteristicaDELasSeñasParticulares;
 

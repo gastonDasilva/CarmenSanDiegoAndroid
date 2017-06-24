@@ -1,5 +1,7 @@
 package com.example.gaston.carmensandiego.model;
 
+import android.icu.text.StringPrepParseException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +73,7 @@ public class DummyData {
 
             Caso cas= new Caso(5,"El gran robo",elAleph);
             cas.setearPaisDeLRobo(argentina);
+            cas.setearPaisDondeEstoy(argentina);
             cas.agregarPaisPlanDeEscape(argentina);
             cas.agregarPaisPlanDeEscape(peru);
             cas.agregarPaisPlanDeEscape(francia);
@@ -87,7 +90,25 @@ public class DummyData {
             return caso;
         }
 
-         public List<Villano> getExpediente(){
+        public List<Villano> getExpediente(){
         return expediente;
+        }
+
+        public List<String> nombreDeLosVillanos () {
+            List<String> nombres = new ArrayList<String>();
+            for(Villano vil: expediente){
+                nombres.add(vil.getNombre());
+            }
+            return nombres;
+        }
+
+        public  Villano dameVillano(String n){
+
+            for(Villano vil : expediente){
+                if(vil.getNombre() == n){
+                    return vil;
+                }
+            }
+            return  null;
         }
 }

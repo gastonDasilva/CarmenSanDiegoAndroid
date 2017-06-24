@@ -25,13 +25,13 @@ public class Caso implements Serializable {
     public Caso(String nombre, Villano vres){
         this.nombreCaso = nombre;
         this.responsable = vres;
-        this.setearPaisDondeEstoy();// para arrancar en un pais
+        //this.setearPaisDondeEstoy();// para arrancar en un pais
     }
     public Caso (int ids ,String nombre, Villano vres){
         this.nombreCaso = nombre;
         this.responsable = vres;
         this.id = ids;
-        this.setearPaisDondeEstoy(); // para arrancar en un pais
+        //this.setearPaisDondeEstoy(); // para arrancar en un pais
     }
     public void setearReporteCaso(String s){
         reporteDelCaso = s;
@@ -55,8 +55,8 @@ public class Caso implements Serializable {
         return  paisDondeEstoy;
     }
 
-    public void setearPaisDondeEstoy(){
-        this.paisDondeEstoy = this.paisDelRobo;
+    public void setearPaisDondeEstoy(Pais p){
+        this.paisDondeEstoy = p;
     }
 
     public Villano getResponsable(){
@@ -89,4 +89,8 @@ public class Caso implements Serializable {
     public String getReporteDelCaso(){
         return  reporteDelCaso;
     }
-}
+
+    public Villano getOrdenDeArresto(){
+        return ordenDeArrestoAlVillano;
+    }
+    }

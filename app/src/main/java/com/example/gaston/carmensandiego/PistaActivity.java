@@ -14,13 +14,14 @@ public class PistaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pista);
         Intent intent = getIntent();
         Caso cas = (Caso)intent.getSerializableExtra(OrdenDeArrestoActivity.EXTRA_CASO); // no se si andara bien esto
         // caso = cas  //esto no funciona ya que son distintas clases , hay que ver como traer el caso
         caso = cas;
         ((TextView) findViewById(R.id.carmenSanDiego_paisDondeEstoy)).setText(String.valueOf(caso.getPaisDondeEstoy().getNombrePais()));
         ((TextView) findViewById(R.id.carmenSanDiego_villanoAArrestar)).setText(String.valueOf(caso.getOrdenDeArrestoAlVillano().getNombre()));
-        setContentView(R.layout.activity_pista);
+
     }
 
         // Falta hacer que se vean los lugares del lugar como botones y asi al hacer click se pueda ver la pista de lugar
