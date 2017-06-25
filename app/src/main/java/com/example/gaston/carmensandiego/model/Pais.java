@@ -27,10 +27,16 @@ public class Pais implements Serializable {
          public int getId() {
             return id;
         }
+        public  void setId(int id){
+            this.id = id;
+        }
         public List <LugarDeInteres> getlugaresDeInteres(){
 		    return lugaresDeInteres;
 
 	    }
+	    public  void setCaracteristicasDelPais(List<String> carac){
+            this.caracteristicasDelPais = carac;
+        }
         public void setNombrePais(String n){
         nombrePais= n;
         }
@@ -57,31 +63,42 @@ public class Pais implements Serializable {
         paisConexiones.add(p);
         }
 
-         public void sacarPaisConexion(Pais p){
+        public void sacarPaisConexion(Pais p){
             paisConexiones.remove(p);
         }
 
-         public List <Pais> getPaisConexion(){
+        public List <Pais> getPaisConexion(){
             return paisConexiones;
 
         }
+
+        public  void setPaisConexiones (List<Pais> p){
+            this.paisConexiones = p;
+        }
+
          public Boolean equals(LugarDeInteres l1, LugarDeInteres l2){
          return l1.nombreLugar() == l2.nombreLugar();
         }
-    public void agregarLugarDeInteres(LugarDeInteres l){
-        if (!lugaresDeInteres.contains(l) && lugaresDeInteres.size() <= 2 ){
-        lugaresDeInteres.add(l);
-        }
-        else{
-        if(lugaresDeInteres.contains(l)){
-        throw new  /*UserException*/RuntimeException("Error el lugar de interes "+ l.nombreLugar()+ " ya esta en la lista" );
+         public void agregarLugarDeInteres(LugarDeInteres l){
+            if (!lugaresDeInteres.contains(l) && lugaresDeInteres.size() <= 2 ){
+                 lugaresDeInteres.add(l);
+                }
+             else{
+             if(lugaresDeInteres.contains(l)){
+             throw new  /*UserException*/RuntimeException("Error el lugar de interes "+ l.nombreLugar()+ " ya esta en la lista" );
             }else
                 {throw new /*UserException*/RuntimeException("Los lugares de interes deben ser Exactamente 3");
                 }
+             }
         }
-    }
 
-    public void sacarLugarDeInteres(LugarDeInteres l){
+        public void sacarLugarDeInteres(LugarDeInteres l){
         lugaresDeInteres.remove(l);
+        }
+
+        public void setearCasoLugares(Caso c){
+            for(LugarDeInteres l: lugaresDeInteres){
+                l.setearCaso(c);
+            }
         }
 }

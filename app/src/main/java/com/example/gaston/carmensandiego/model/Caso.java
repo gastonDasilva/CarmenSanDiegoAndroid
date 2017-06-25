@@ -56,6 +56,7 @@ public class Caso implements Serializable {
     }
 
     public void setearPaisDondeEstoy(Pais p){
+        p.setearCasoLugares(this);
         this.paisDondeEstoy = p;
     }
 
@@ -93,4 +94,16 @@ public class Caso implements Serializable {
     public Villano getOrdenDeArresto(){
         return ordenDeArrestoAlVillano;
     }
+
+    public String nombreDePaisesVisitados() {
+        String res = "";
+        for (String nombrePais : paisesVisitados) {
+                if(res ==""){
+                    res = nombrePais;
+                }else {
+                        res = res + " -> " + nombrePais;
+                    }
+        }
+        return res;
     }
+}

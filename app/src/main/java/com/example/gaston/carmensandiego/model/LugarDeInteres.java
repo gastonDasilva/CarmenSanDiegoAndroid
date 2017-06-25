@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public abstract class LugarDeInteres implements Serializable {
     // Solo pueden ser Club,Embajada,Banco y Biblioteca
-     private Boolean informante = false  ;//Solo puede haber una persona en el lugar, es decir que solo un booleano puede ser true
+    private Boolean informante = false  ;//Solo puede haber una persona en el lugar, es decir que solo un booleano puede ser true
     private Boolean ocupante = false;
     private Boolean cuidador = true;
     private Pais paisLugar;
@@ -49,7 +49,16 @@ public abstract class LugarDeInteres implements Serializable {
             return false;
         }
     }
+    public Boolean getInformante(){
+        return informante;
+    }
+    public  Boolean getOcupante(){
+        return ocupante;
+    }
 
+    public Boolean getCuidador(){
+        return cuidador;
+    }
 
     public void setearVillanoEnLugar(Villano v){
         vil = v;
