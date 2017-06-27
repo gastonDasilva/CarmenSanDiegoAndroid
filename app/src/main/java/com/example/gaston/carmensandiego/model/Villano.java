@@ -22,6 +22,14 @@ public class Villano implements Serializable{
         this.nombre = nombre;
         this.sexo = sexo;
     }
+    public Villano(int id, String nombre, String sexo, List<String> senha, List<String> hobbies){
+        this.id = id;
+        this.nombre = nombre;
+        this.sexo = sexo;
+        this.senhasParticulares = senha;
+        this.hobbies= hobbies;
+    }
+
 
     public List<String> getHobbies(){
         return hobbies;

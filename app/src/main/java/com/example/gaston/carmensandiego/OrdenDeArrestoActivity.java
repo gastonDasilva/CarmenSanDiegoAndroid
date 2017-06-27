@@ -62,6 +62,7 @@ public class OrdenDeArrestoActivity extends AppCompatActivity implements Adapter
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
         String nombrePaisDondeEstoy = String.valueOf(caso.getPais().getNombre());
         ((TextView) findViewById(R.id.carmenSanDiego_paisDondeEstoy)).setText(nombrePaisDondeEstoy);
 
@@ -101,6 +102,7 @@ public class OrdenDeArrestoActivity extends AppCompatActivity implements Adapter
         carmenSanDiegoService.getVillanos(new Callback<List<Villano>>() {
             @Override
             public void success(List<Villano> villanos, Response response) {
+                System.out.print("entro al success");
                 agregarVillanos(villanos);
             }
 
