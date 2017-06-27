@@ -32,8 +32,8 @@ import retrofit.client.Response;
 public class OrdenDeArrestoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public  final static String EXTRA_CASO = "com.example.gaston.carmensandiego.CASO";
     private DummyData dummy = new DummyData();
-   // private Caso caso ;//= dummy.getCaso();
-    private CasoRest caso;
+    private Caso caso = dummy.getCaso();
+    //private CasoRest caso;
     private List<Villano> villanos = new ArrayList<Villano>();
     private ApiUtilsCarmenSanDiegoService serv = new ApiUtilsCarmenSanDiegoService();
     private Villano villanoAArrestar;
@@ -43,27 +43,27 @@ public class OrdenDeArrestoActivity extends AppCompatActivity implements Adapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orden_de_arresto);
-        obtenerVillanos();
+        //obtenerVillanos();
         Intent intent = getIntent();
-        if (intent.getSerializableExtra(OrdenDeArrestoActivity.EXTRA_CASO) != null) {
-            caso = (CasoRest)intent.getSerializableExtra(OrdenDeArrestoActivity.EXTRA_CASO);
-        } else {
+        //if (intent.getSerializableExtra(OrdenDeArrestoActivity.EXTRA_CASO) != null) {
+          //  caso = (CasoRest)intent.getSerializableExtra(OrdenDeArrestoActivity.EXTRA_CASO);
+        //} else {
             //caso = dummy.getCaso();
-            obtenerCaso();
-        }
+            //obtenerCaso();
+        //}
         /*Intent intent = getIntent(); // ver si esto funciona a la primera vez que se ejecuta
         Caso cas = (Caso)intent.getSerializableExtra(OrdenDeArrestoActivity.EXTRA_CASO);
         caso = cas;*/
         Spinner spinner = (Spinner) findViewById(R.id.villanos_spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,nombreDeVillanos()/*dummy.nombreDeLosVillanos()*/);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,/*nombreDeVillanos()*/dummy.nombreDeLosVillanos());
 
 // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-        String nombrePaisDondeEstoy = String.valueOf(caso.getPais().getNombre());
+        String nombrePaisDondeEstoy = String.valueOf(caso.getPaisDondeEstoy().getNombrePais());
         ((TextView) findViewById(R.id.carmenSanDiego_paisDondeEstoy)).setText(nombrePaisDondeEstoy);
 
         spinner.setOnItemSelectedListener(this);
@@ -75,11 +75,12 @@ public class OrdenDeArrestoActivity extends AppCompatActivity implements Adapter
     public void pedirOrdenDeArresto(View view) {
         ///aca se deveria traer el villano que se selecciona con el selecetor
         Spinner spinner = (Spinner) findViewById(R.id.villanos_spinner);
-        /*((TextView) findViewById(R.id.carmenSanDiego_villanoAArrestar)).setText(String.valueOf(caso.getOrdenDeArrestoAlVillano().getNombre()));
-        Toast.makeText(OrdenDeArrestoActivity.this, "Orden emitida A:" + caso.getOrdenDeArresto().getNombre(), Toast.LENGTH_LONG).show();*/
-        ((TextView) findViewById(R.id.carmenSanDiego_villanoAArrestar)).setText(String.valueOf(this.villanoAArrestar.getNombre()));
+        ((TextView) findViewById(R.id.carmenSanDiego_villanoAArrestar)).setText(String.valueOf(caso.getOrdenDeArrestoAlVillano().getNombre()));
+        Toast.makeText(OrdenDeArrestoActivity.this, "Orden emitida A:" + caso.getOrdenDeArresto().getNombre(), Toast.LENGTH_LONG).show();
+        /*((TextView) findViewById(R.id.carmenSanDiego_villanoAArrestar)).setText(String.valueOf(this.villanoAArrestar.getNombre()));
         Toast.makeText(OrdenDeArrestoActivity.this, "Orden emitida A:" + this.villanoAArrestar.getNombre(), Toast.LENGTH_LONG).show();
-        emitirOrden(this.villanoAArrestar, caso.getId());
+        */
+        //emitirOrden(this.villanoAArrestar, caso.getid());
     }
 
     public void viajar(View view) {
@@ -96,7 +97,7 @@ public class OrdenDeArrestoActivity extends AppCompatActivity implements Adapter
         startActivity(intent);
 
     }
-
+/*
     private void obtenerVillanos() {
         CarmenSanDiegoService carmenSanDiegoService =  serv.createCarmenSanDiegoService();
         carmenSanDiegoService.getVillanos(new Callback<List<Villano>>() {
@@ -148,7 +149,7 @@ public class OrdenDeArrestoActivity extends AppCompatActivity implements Adapter
                 error.printStackTrace();
             }
         });
-    }
+    }*//*
     private void mostrarVillano(CasoRest caso) {
         this.caso = caso;
     }
@@ -162,7 +163,7 @@ public class OrdenDeArrestoActivity extends AppCompatActivity implements Adapter
     private void agregarVillanos(List<Villano> villanos) {
         this.villanos = villanos;
     }
-
+*/
     private List<String> nombreDeVillanos(){
         List<String> nombres = new ArrayList<String>();
         for(Villano vil : villanos){
@@ -185,10 +186,10 @@ public class OrdenDeArrestoActivity extends AppCompatActivity implements Adapter
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         Spinner spinner = (Spinner) findViewById(R.id.villanos_spinner);
         String nombreVillano = (String) spinner.getItemAtPosition(position);
-        //Villano vil = dummy.dameVillano(nombreVillano);
-        Villano vil = dameVillano(nombreVillano);
-        //caso.setearOrdenDeArrestoAlVillano(vil);
-        setearVillaAArrestar(vil);
+        Villano vil = dummy.dameVillano(nombreVillano);
+       // Villano vil = dameVillano(nombreVillano);
+        caso.setearOrdenDeArrestoAlVillano(vil);
+        //setearVillaAArrestar(vil);
         //emitirOrden(vil,caso.getId());
     }
 

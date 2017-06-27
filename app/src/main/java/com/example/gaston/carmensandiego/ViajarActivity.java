@@ -31,7 +31,7 @@ import retrofit.client.Response;
 
 public class ViajarActivity extends AppCompatActivity {
     public  final static String EXTRA_CASO = "com.example.gaston.carmensandiego.CASO";
-    private CasoRest caso ;
+    private Caso caso ;
     private ListView list;
     private PaisAdapter  adapter;
     private ApiUtilsCarmenSanDiegoService serv = new ApiUtilsCarmenSanDiegoService();
@@ -42,29 +42,36 @@ public class ViajarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_viajar);
         list = (ListView)findViewById(R.id.carmenSanDiego_listViewViajar);
         Intent intent = getIntent();
-        CasoRest cas = (CasoRest)intent.getSerializableExtra(OrdenDeArrestoActivity.EXTRA_CASO); // no se si andara bien esto
+        //CasoRest cas = (CasoRest)intent.getSerializableExtra(OrdenDeArrestoActivity.EXTRA_CASO); // no se si andara bien esto
        // caso = cas  //esto no funciona ya que son distintas clases , hay que ver como traer el caso
-        caso = cas;
-        String nombrePaisDondeEstoy = String.valueOf(caso.getPais().getNombre());
-        List<PaisRest> model = caso.getPais().getConexiones();
+        caso = (Caso)intent.getSerializableExtra(OrdenDeArrestoActivity.EXTRA_CASO);;
+        String nombrePaisDondeEstoy = String.valueOf(caso.getPaisDondeEstoy().getNombrePais());
+        List<Pais> model = caso.getPaisDondeEstoy().getPaisConexion();
         adapter = new PaisAdapter(this,model);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                try {
-                    PaisRest pais = (PaisRest) adapter.getItem(i);
-                    viajar(pais);
-                    Toast.makeText(ViajarActivity.this, "Viajas A:"+pais.getNombre(), Toast.LENGTH_LONG).show();
-                }catch(Exception e){ e.printStackTrace();}
+
+                actualizarPaisDondeEstoy((Pais) adapter.getItem(i));
+
             }
         });
         String nombreDePaisesVisitados = caso.nombreDePaisesVisitados();
         ((TextView) findViewById(R.id.carmenSanDiego_paisDondeEstoy2)).setText(nombrePaisDondeEstoy);
-        //((TextView) findViewById(R.id.carmenSanDiego_villanoAArrestar)).setText(String.valueOf(caso.getOrdenDeArrestoAlVillano().getNombre()));
+        ((TextView) findViewById(R.id.carmenSanDiego_villanoAArrestar)).setText(String.valueOf(caso.getOrdenDeArrestoAlVillano().getNombre()));
         // VER COMO PASAR EL NOMBRE DEL VILLANO A ARRESTAR. UNA IDEA PUEDE SER DE AGREGAR UN ATRIBUTO String que sea
         // el nombre del villano a arrestar
         ((TextView) findViewById(R.id.carmenSanDiego_paisesRecorridos)).setText(nombreDePaisesVisitados);
+    }
+    public void actualizarPaisDondeEstoy(Pais pais){
+        try {
+            //Pais pais = (Pais) adapter.getItem(i);
+            ((TextView) findViewById(R.id.carmenSanDiego_paisDondeEstoy2)).setText(pais.getNombrePais());
+            System.out.println(pais.getNombrePais());
+            viajar(pais);
+            Toast.makeText(ViajarActivity.this, "Viajas A:"+pais.getNombrePais(), Toast.LENGTH_LONG).show();
+        }catch(Exception e){ e.printStackTrace();}
     }
 
     public void ordenDeArresto(View view) {
@@ -82,13 +89,14 @@ public class ViajarActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-    private void viajar(PaisRest p) {
-        obtenerPais(p.getId());
-        caso.setPais(new PaisCompletoRest(this.paisViajar));
+    /*private void viajar(PaisRest p) {
+        //obtenerPais(p.getId());
+        //caso.setPais(new PaisCompletoRest(this.paisViajar));
+        caso.setearPaisDondeEstoy(this.paisViajar);
         caso.agregarPaisesVisitados(this.paisViajar);
         CarmenSanDiegoService carmenSanDiegoService = serv.createCarmenSanDiegoService();
         ViajeRequest viaje = new ViajeRequest(p.getId());
-        carmenSanDiegoService.viajar(viaje, new Callback<CasoRest>() {
+        /*carmenSanDiegoService.viajar(viaje, new Callback<CasoRest>() {
             @Override
             public void success(CasoRest Caso, Response response) {
                 Log.e("Viaje A : ", caso.getPais().getNombre());
@@ -115,13 +123,13 @@ public class ViajarActivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
     private void setearPais(Pais p) {
         paisViajar = p;
     }
-    /*public void viajar (Pais p){
+    public void viajar (Pais p){
         caso.setearPaisDondeEstoy(p);
         caso.agregarPaisesVisitados(p);
-    }*/
+    }
 }

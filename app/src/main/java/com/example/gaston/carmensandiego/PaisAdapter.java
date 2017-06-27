@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.gaston.carmensandiego.model.Pais;
 import com.example.gaston.carmensandiego.model.PaisRest;
@@ -18,9 +19,9 @@ import java.util.List;
 
 public class PaisAdapter extends BaseAdapter {
     private Context context;
-    private  List<PaisRest> lista;
+    private  List<Pais> lista;
 
-    public PaisAdapter(Context context , List<PaisRest> lista){
+    public PaisAdapter(Context context , List<Pais> lista){
         this.context = context;
         this.lista = lista;
     }
@@ -45,8 +46,8 @@ public class PaisAdapter extends BaseAdapter {
             LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             view = layoutInflater.inflate(R.layout.item,null);
         }
-            Button boton = (Button)view.findViewById(R.id.carmenSanDiego_item_pais);
-            boton.setText(lista.get(i).getNombre());
+            /*Button*/ TextView boton = (TextView) view.findViewById(R.id.carmenSanDiego_item_pais);
+            boton.setText(lista.get(i).getNombrePais());
         return view;
     }
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.gaston.carmensandiego.model.LugarDeInteres;
 import com.example.gaston.carmensandiego.model.LugarDeInteresRest;
@@ -19,9 +20,9 @@ import java.util.List;
 
 public class LugarDeInteresAdapter  extends BaseAdapter {
     private Context context;
-    private List<LugarDeInteresRest> lista;
+    private List<LugarDeInteres> lista;
 
-    public LugarDeInteresAdapter(Context context , List<LugarDeInteresRest> lista){
+    public LugarDeInteresAdapter(Context context , List<LugarDeInteres> lista){
         this.context = context;
         this.lista = lista;
     }
@@ -46,8 +47,8 @@ public class LugarDeInteresAdapter  extends BaseAdapter {
             LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             view = layoutInflater.inflate(R.layout.item_lugar,null);
         }
-        Button boton = (Button)view.findViewById(R.id.carmenSanDiego_item_lugar);
-        boton.setText(lista.get(i).getNombre());
+        TextView boton = (TextView)view.findViewById(R.id.carmenSanDiego_item_lugar);
+        boton.setText(lista.get(i).nombreLugar());
         return view;
     }
 }
